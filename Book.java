@@ -3,12 +3,12 @@ public class Book
   
   public static boolean isValidISBN(String isbn)
   {
-    if (isbn.length() == 10)
-      return isValidISBN10(isbn); 
-    else if (isbn.length() == 13)
-      return isValidISBN13(isbn);
-    
-    return false;
+   int sum = 0;
+    for(int i = 0; i < isbn.length();i++)
+    {
+      sum+= Character.digit(isbn.charAt(i),10)*(10-i);
+    }
+    return (sum%11 == 0);
     
     
   }
